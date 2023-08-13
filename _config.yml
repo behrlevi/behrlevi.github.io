@@ -20,20 +20,20 @@ menu:
     url: /feed.xml
 email: sidolevente@aol.com
 # See: https://disqus.com/
-disqus_username: disqus_username
+#disqus_username: disqus_username
 # Contact Form Setting
 # See: https://formspree.io/
-formspree_form_id: formspree_form_id
+#formspree_form_id: formspree_form_id
 
 
 # Social Media Settings
 # Remove the item if you don't need it
 github_username: behrlevi
-facebook_username: facebook_username
-twitter_username: twitter_username
-instagram_username: instagram_username
-linkedin_username: linkedin_username
-medium_username: medium_username
+#facebook_username: facebook_username
+#twitter_username: twitter_username
+#instagram_username: instagram_username
+linkedin_username: levente-béhr-5bb865112
+#medium_username: medium_username
 
 
 # Posts Settings
