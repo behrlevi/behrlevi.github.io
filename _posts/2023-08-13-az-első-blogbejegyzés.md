@@ -4,7 +4,7 @@ layout: post
 title: "Az első blogbejegyzés"
 subtitle:
 description:
-image:
+image: /assets/img/it_background.jpg
 optimized_image:
 category:
 tags:
