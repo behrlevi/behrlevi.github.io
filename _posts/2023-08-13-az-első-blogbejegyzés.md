@@ -8,8 +8,8 @@ image: /assets/img/it_background.jpg
 optimized_image:
 category: blog
 tags:
-	-welcome
-	-blog
+  - welcome
+  - blog
 author:
 paginate: false
 ---
