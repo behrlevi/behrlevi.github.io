@@ -8,7 +8,7 @@ image: /assets/img/Git-logo.png
 optimized_image:
 category: version control
 tags:
-	-git
+	- git
 author: Béhr
 paginate: false
 ---
