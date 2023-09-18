@@ -15,8 +15,8 @@ Embarking on a new project and setting up Git for the first time is a breeze! Ju
 
 Remember, this is a one-time setup per project. So, if you’re starting a fresh project, you’ll need to repeat these steps. But don’t worry, it’s just a one-time thing for each project.
 
-> $ git config --global user.name "Your Name"
-> $ git config --global user.email "you@youraddress.com"
-> $ git config --global push.default matching
-> $ git config --global alias.co checkout
+> $ git config --global user.name "Your Name" <br/>
+> $ git config --global user.email "you@youraddress.com" <br/>
+> $ git config --global push.default matching <br/>
+> $ git config --global alias.co checkout <br/>
 > $ git init
