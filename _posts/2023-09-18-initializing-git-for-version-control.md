@@ -7,7 +7,8 @@ description: I'm recording the commands needed for setting up Git version contro
 image: /assets/img/Git-logo.png
 optimized_image:
 category: version control
-tags: git
+tags:
+	-git
 author: Béhr
 paginate: false
 ---

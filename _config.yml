@@ -15,7 +15,7 @@ menu:
   - title: About
     url: /about
   #- title: Contact
-    url: /contact
+    #url: /contact
   - title: Feed
     url: /feed.xml
 email: sidolevente@aol.com
