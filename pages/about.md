@@ -12,8 +12,7 @@ permalink: /about/
 # About
 
 I'm a system administrator currently working at a biofuel factory. My current duties involve responding
-to tickets as a level 1 user support, managing active directory, FortiGate firewall VPN and a couple of
-other systems including a CCTV server.
+to tickets as a firs level user support, managing active directory, FortiGate firewall VPN and other systems including a CCTV server.
 I'm currently studying for the CCNA and would like to escalate my career into network operations and
 eventually, become a cybersecurity professional.
 I'm also pursuing a university degree in computer science.
