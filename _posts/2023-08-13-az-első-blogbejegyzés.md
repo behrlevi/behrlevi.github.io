@@ -48,7 +48,7 @@ Along with the realization that I was overworking myself, I've came accross clou
 
 Then I got the idea of looking into cloud jobs and found that my current knowldedge in IT networking won't be completely wasted by continuing on this path. Of course, networking is much simpler in the cloud and a level of knowledge beyound the CCNA would be an overkill and unnecessary but having the CCNA accompanied with some cloud associate certification could easly escalate me to my desired posotion.
 <br/>
-I'm currently at a phase of gaining and honing the core skills needed to transition to a cloud role and for that I'm following a detailed guide. I would like to shout out to <strong href="https://www.youtube.com/@MadeByGPS">Gwyneth Peña-Siguenza</strong> who made an excellent roadmap which I highly recommend to everyone considering a career change in this direction.
+I'm currently at a phase of gaining and honing the core skills needed to transition to a cloud role and for that I'm following a detailed guide. I would like to shout out to <a href="https://www.youtube.com/@MadeByGPS">Gwyneth Peña-Siguenza</a> who made an excellent roadmap which I highly recommend to everyone considering a career change in this direction.
 
 ## Looking ahead
 
