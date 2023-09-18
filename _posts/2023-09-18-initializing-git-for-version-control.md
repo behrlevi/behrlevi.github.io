@@ -1,5 +1,5 @@
 ---
-date: 2023-09-18 07:44:24
+date: 2023-09-18 07:46:57
 layout: post
 title: "Initializing Git For Version Control"
 subtitle:
