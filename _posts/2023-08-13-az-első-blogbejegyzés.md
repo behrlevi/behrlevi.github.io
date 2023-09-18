@@ -15,6 +15,7 @@ paginate: false
 ---
 
 Dear Reader!
+
 <br/>
 I would like to share with you my thoughts about a project I've recently decided to start working on, to become a Cloud Engineer. As someone who has spent a few years working as a System Administrator, I've started to feel that I want to do more with my life. The current position I'm at won't provide me more than the mundane administrative tasks left for me to do including some IT-related work but writing e-mails most of the time. I’ve decided it’s time to leverage my experience, gain more skills, learn cutting-edge technologies and take the next step in my career.
 <br/>
