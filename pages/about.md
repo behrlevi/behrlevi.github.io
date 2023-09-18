@@ -11,9 +11,10 @@ permalink: /about/
 
 # About
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I'm a system administrator currently working at a biofuel factory. My current duties involve responding
+to tickets as a level 1 user support, managing active directory, FortiGate firewall VPN and a couple of
+other systems including a CCTV server.
+I'm currently studying for the CCNA and would like to escalate my career into network operations and
+eventually, become a cybersecurity professional.
+I'm also pursuing a university degree in computer science.
+I'm a father of a boy and an avid recumbent cyclist.
