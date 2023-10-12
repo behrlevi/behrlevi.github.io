@@ -4,7 +4,7 @@ layout: post
 title: "Getting started with AWS EC2"
 subtitle:
 description:
-image:
+image:/assets/img/OIP.jpg
 optimized_image:
 category: cloud
 tags:
