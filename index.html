@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Developer Portfolio</title>
+    <style>
+        /* Base styles */
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --accent-color: #a0a0a0;
+            --link-hover: #fff;
+            --border-color: #333;
+            --terminal-bg: #121212;
+            --terminal-text: #00ff00;
+            --terminal-prompt: #00ff00;
+            --terminal-path: #3498db;
+            --terminal-username: #e74c3c;
+            --container-width: 650px;
+            --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Monaco, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .terminal {
+            background-color: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .terminal-header {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .terminal-button.red {
+            background-color: #ff5f56;
+        }
+
+        .terminal-button.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .terminal-button.green {
+            background-color: #27c93f;
+        }
+
+        .terminal-prompt {
+            color: var(--terminal-username);
+        }
+
+        .terminal-at {
+            color: var(--terminal-text);
+        }
+
+        .terminal-machine {
+            color: var(--terminal-path);
+        }
+
+        .terminal-tilde {
+            color: var(--terminal-text);
+        }
+
+        .terminal-dollar {
+            color: var(--terminal-text);
+        }
+
+        .terminal-command {
+            color: var(--terminal-text);
+            margin-left: 0.5rem;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            background-color: var(--terminal-text);
+            width: 0.5rem;
+            height: 1rem;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 0.2rem;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .terminal-content {
+            display: none; /* Initially hidden, shown after typing animation */
+            padding-top: 1rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-underline-offset: 3px;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration-color: var(--link-hover);
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+        }
+
+        .bio {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social a {
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .project {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background-color: var(--border-color);
+            color: var(--text-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .bio {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-button red"></div>
+            <div class="terminal-button yellow"></div>
+            <div class="terminal-button green"></div>
+        </div>
+        <div class="terminal-line">
+            <span class="terminal-prompt">user</span><span class="terminal-at">@</span><span class="terminal-machine">machine</span><span class="terminal-tilde">:</span><span class="terminal-tilde">~</span><span class="terminal-dollar">$</span>
+            <span id="terminal-command" class="terminal-command"></span><span class="terminal-cursor"></span>
+        </div>
+        <div id="terminal-content" class="terminal-content">
+            <main>
+                <header>
+                    <h1>Your Name</h1>
+                    <div class="bio">
+                        <p>Developer & open source contributor. Working on interesting projects at the intersection of [your interests]. Previously at [previous experience].</p>
+                    </div>
+                    <nav>
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#talks">Talks</a>
+                        <a href="mailto:your.email@example.com">Contact</a>
+                    </nav>
+                </header>
+
+                <section id="about">
+                    <h2>About</h2>
+                    <p>I'm a software developer passionate about [your interests]. Currently focused on [current focus], I enjoy exploring new technologies and contributing to open source projects.</p>
+                    <p>When I'm not coding, you can find me [your hobbies/interests].</p>
+                    
+                    <div class="social">
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </section>
+
+                <section id="projects">
+                    <h2>Projects</h2>
+                    
+                    <div class="project">
+                        <h3><a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer">Project One</a></h3>
+                        <div class="project-meta">2023 • Open Source</div>
+                        <p>A brief description of your first project. What problem does it solve? What technologies did you use?</p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project">
+                        <h3><a href="https://github.com/yourusername/project2" target="_blank" rel="noopener noreferrer">Project Two</a></h3>
+                        <div class="project-meta">2022 • Personal</div>
+                        <p>A brief description of your second project. Highlight key features and your contribution.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project">
+                        <h3><a href="https://github.com/yourusername/project3" target="_blank" rel="noopener noreferrer">Project Three</a></h3>
+                        <div class="project-meta">2021 • Collaboration</div>
+                        <p>A brief description of your third project. What was the goal? What did you learn?</p>
+                        <div class="tags">
+                            <span class="tag">Go</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="blog">
+                    <h2>Blog</h2>
+                    
+                    <div class="project">
+                        <h3><a href="#" target="_blank" rel="noopener noreferrer">Blog Post Title One</a></h3>
+                        <div class="project-meta">March 15, 2023</div>
+                        <p>A brief preview of your blog post content. This should give readers an idea of what to expect.</p>
+                    </div>
+                    
+                    <div class="project">
+                        <h3><a href="#" target="_blank" rel="noopener noreferrer">Blog Post Title Two</a></h3>
+                        <div class="project-meta">February 28, 2023</div>
+                        <p>A brief preview of your blog post content. This should give readers an idea of what to expect.</p>
+                    </div>
+                </section>
+
+                <section id="talks">
+                    <h2>Talks</h2>
+                    
+                    <div class="project">
+                        <h3><a href="#" target="_blank" rel="noopener noreferrer">Talk Title One</a></h3>
+                        <div class="project-meta">Conference Name • October 2022</div>
+                        <p>A brief description of your talk. What topics did you cover? What was the audience takeaway?</p>
+                    </div>
+                    
+                    <div class="project">
+                        <h3><a href="#" target="_blank" rel="noopener noreferrer">Talk Title Two</a></h3>
+                        <div class="project-meta">Meetup Name • July 2022</div>
+                        <p>A brief description of your talk. What topics did you cover? What was the audience takeaway?</p>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>© 2025 Your Name • Built with HTML and CSS</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Terminal typing effect
+            const terminalCommand = document.getElementById('terminal-command');
+            const terminalContent = document.getElementById('terminal-content');
+            const command = 'cat portfolio.md'; // The command to type
+            let i = 0;
+            
+            function typeCommand() {
+                if (i < command.length) {
+                    terminalCommand.textContent += command.charAt(i);
+                    i++;
+                    setTimeout(typeCommand, 100); // Typing speed
+                } else {
+                    // When typing is done, show the content after a brief pause
+                    setTimeout(function() {
+                        terminalContent.style.display = 'block';
+                        // Hide the cursor when content is displayed
+                        document.querySelector('.terminal-cursor').style.display = 'none';
+                    }, 500);
+                }
+            }
+            
+            // Start typing after a brief delay
+            setTimeout(typeCommand, 1000);
+
+            // You could add more effects here, such as handling terminal commands
+            // For example, typing 'ls' to show a list of files, etc.
+        });
+    </script>
+</body>
+</html>
