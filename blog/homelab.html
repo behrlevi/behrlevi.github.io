@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Homelab documentation – Your Name</title>
+  <meta name="description" content="Technical documentation of the Kubernetes Homelab.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://yourusername.github.io/blog/homelab.html">
+
+  <!-- Minimal CSS for readability -->
+  <style>
+    :root { --bg:#0f1115; --fg:#e6e6e6; --muted:#9aa4a6; --accent:#4ea1ff; --card:#171a21; --border:#232832; }
+    html,body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { max-width: 860px; margin: 32px auto 0; padding: 0 20px; }
+    header nav a { margin-right: 16px; color: var(--muted); }
+    .hero { max-width: 860px; margin: 24px auto; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+    .hero h1 { margin: 0 0 8px; font-size: 2rem; }
+    .meta { color: var(--muted); font-size: 0.95rem; }
+    main { max-width: 860px; margin: 8px auto 40px; padding: 0 20px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+    article { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    article h2, h3, h4 { margin-top: 1.2em; }
+    pre, code { background: #0b0d12; border: 1px solid var(--border); border-radius: 8px; }
+    pre { padding: 14px; overflow: auto; }
+    blockquote { border-left: 4px solid var(--border); margin: 1em 0; padding: 0.5em 1em; color: var(--muted); background: #12151b; border-radius: 8px; }
+    aside { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag { font-size: 0.85rem; color: var(--muted); background: #12151b; border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; }
+    footer { max-width: 860px; margin: 24px auto; padding: 0 20px; color: var(--muted); }
+    @media (min-width: 980px) { main { grid-template-columns: 1fr 280px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Homelab documentation</h1>
+    <div class="meta">October 20, 2025 • Kubernetes • Personal</div>
+    <div class="tags">
+      <span class="tag">Kubernetes</span>
+      <span class="tag">FluxCD</span>
+      <span class="tag">GitOps</span>
+    </div>
+  </section>
+
+  <main>
+    <article>
+      <h2>Overview</h2>
+      <p>This post documents the homelab’s Kubernetes stack, GitOps flow, and environment overlays.</p>
+
+      <h3>Repository layout</h3>
+      <pre><code>.
+├── apps
+│   ├── base
+│   └── staging
+└── clusters/staging
+</code></pre>
+
+      <h3>Deployment notes</h3>
+      <ul>
+        <li><strong>Flux reconcile:</strong> Commit to main branch → auto-deploy.</li>
+        <li><strong>Secrets:</strong> Managed via SOPS, decrypted in CI/CD.</li>
+      </ul>
+
+      <blockquote>Tip: keep environment-specific patches in overlays to avoid drift.</blockquote>
+
+      <h3>Commands</h3>
+      <pre><code>kubectl config set-context --current --namespace=homelab
+flux reconcile kustomization apps --with-source
+</code></pre>
+
+      <h3>Next steps</h3>
+      <p>Add monitoring overlays and a migration checklist.</p>
+    </article>
+
+    <aside>
+      <h4>On this page</h4>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#repository-layout">Repository layout</a></li>
+        <li><a href="#deployment-notes">Deployment notes</a></li>
+        <li><a href="#commands">Commands</a></li>
+      </ul>
+      <h4>Share</h4>
+      <p><a href="https://twitter.com/intent/tweet?text=Homelab%20documentation&url=https://yourusername.github.io/blog/homelab.html">Tweet</a></p>
+    </aside>
+  </main>
+
+  <footer>
+    © Your Name — <a href="https://github.com/yourusername">GitHub</a>
+  </footer>
+</body>
+</html>
