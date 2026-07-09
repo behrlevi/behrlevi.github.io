@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levente Béhr - DevOps Portfolio</title>
+    <title>Nova's Stack - Portfolio</title>
     <style>
-        /* Base styles */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap');
+
         :root {
-            --bg-color: #1a1a1a;
-            --text-color: #e0e0e0;
-            --accent-color: #a0a0a0;
-            --link-hover: #fff;
-            --border-color: #333;
-            --terminal-bg: #121212;
-            --terminal-text: #00ff00;
-            --terminal-prompt: #00ff00;
-            --terminal-path: #3498db;
-            --terminal-username: #e74c3c;
-            --container-width: 650px;
-            --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Monaco, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
-            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --bg-base: #0a0612;
+            --bg-panel: #110c1c;
+            --bg-card: #161124;
+            --text-main: #e2dcee;
+            --text-muted: #8b839b;
+            --accent-pink: #ff40a0;
+            --accent-cyan: #40f0ff;
+            --accent-green: #30fa7b;
+            --border-color: #2a2240;
+            --font-mono: 'Fira Code', monospace;
         }
 
         * {
@@ -29,309 +27,384 @@
         }
 
         body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
             font-family: var(--font-mono);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 2rem 1rem;
-            max-width: var(--container-width);
-            margin: 0 auto;
-        }
-
-        .terminal {
-            background-color: var(--terminal-bg);
-            border-radius: 6px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            overflow: hidden;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .terminal-header {
             display: flex;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
         }
 
-        .terminal-button {
+        /* Main Window App Container */
+        .app-container {
+            width: 100%;
+            max-width: 1400px;
+            height: 90vh;
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Top Window Bar */
+        .title-bar {
+            height: 40px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            margin-right: 8px;
+        }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .status-online {
+            color: var(--accent-green);
         }
 
-        .terminal-button.red {
-            background-color: #ff5f56;
-        }
-
-        .terminal-button.yellow {
-            background-color: #ffbd2e;
-        }
-
-        .terminal-button.green {
-            background-color: #27c93f;
-        }
-
-        .terminal-prompt {
-            color: var(--terminal-username);
-        }
-
-        .terminal-at {
-            color: var(--terminal-text);
-        }
-
-        .terminal-machine {
-            color: var(--terminal-path);
-        }
-
-        .terminal-tilde {
-            color: var(--terminal-text);
-        }
-
-        .terminal-dollar {
-            color: var(--terminal-text);
-        }
-
-        .terminal-command {
-            color: var(--terminal-text);
-            margin-left: 0.5rem;
-        }
-
-        .terminal-cursor {
-            display: inline-block;
-            background-color: var(--terminal-text);
-            width: 0.5rem;
-            height: 1rem;
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-            margin-left: 0.2rem;
-        }
-
-        @keyframes blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .terminal-content {
-            display: none; /* Initially hidden, shown after typing animation */
-            padding-top: 1rem;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: var(--font-mono);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 1.6rem;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 2rem;
-        }
-
-        a {
-            color: var(--text-color);
-            text-decoration: underline;
-            text-decoration-color: var(--accent-color);
-            text-underline-offset: 3px;
-            transition: all 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--link-hover);
-            text-decoration-color: var(--link-hover);
-        }
-
-        p, ul, ol {
-            margin-bottom: 1rem;
-        }
-
-        .bio {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        nav {
+        /* Main Content Split */
+        .workspace {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            flex: 1;
+            overflow: hidden;
         }
 
-        nav a {
-            font-family: var(--font-mono);
-            text-decoration: none;
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            border-right: 1px solid var(--border-color);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            overflow-y: auto;
+        }
+
+        .sidebar-section h4 {
+            color: var(--accent-pink);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .brand h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .location-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: var(--accent-cyan);
             font-size: 0.9rem;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .cmd-list {
+            list-style: none;
+            font-size: 0.85rem;
         }
 
-        .social {
+        .cmd-list li {
+            margin-bottom: 10px;
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
         }
 
-        .social a {
-            text-decoration: none;
-            font-size: 1.2rem;
+        .cmd-list .cmd {
+            color: var(--accent-cyan);
+            width: 60px;
+            font-weight: bold;
         }
 
-        .project {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
-            margin-bottom: 1.5rem;
+        .cmd-list .desc {
+            color: var(--text-muted);
         }
 
-        .project h3 {
-            margin-bottom: 0.5rem;
+        /* Main Terminal Area */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-meta {
-            font-family: var(--font-mono);
+        .boot-sequence {
+            font-size: 0.85rem;
+            margin-bottom: 40px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .boot-sequence .ok { color: var(--accent-green); font-weight: bold; }
+
+        .breadcrumbs {
+            color: var(--accent-pink);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-title .white { color: #fff; }
+        .hero-title .pink { color: #d680ff; }
+        .hero-title .cyan { color: var(--accent-cyan); }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        /* Cards Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        .card-number {
+            color: var(--accent-pink);
             font-size: 0.8rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        .tags {
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Terminal Input Area */
+        .interactive-section h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+        }
+
+        .terminal-input-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            background-color: var(--border-color);
-            color: var(--text-color);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding-top: 1rem;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 1rem;
             border-top: 1px solid var(--border-color);
-            font-size: 0.8rem;
-            color: var(--accent-color);
+            padding-top: 20px;
         }
 
-        @media (max-width: 650px) {
-            body {
-                padding: 1.5rem 1rem;
-            }
+        .prompt-text {
+            color: var(--accent-pink);
+            margin-right: 10px;
+        }
+        
+        .prompt-text span.user { color: var(--accent-pink); }
+        .prompt-text span.path { color: var(--accent-cyan); }
+        .prompt-text span.arrow { color: var(--accent-green); }
 
-            h1 {
-                font-size: 1.4rem;
-            }
+        #cli-input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            flex: 1;
+            outline: none;
+        }
 
-            h2 {
-                font-size: 1.2rem;
-            }
-
-            .bio {
-                font-size: 1rem;
-            }
+        .terminal-history {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="terminal-button red"></div>
-            <div class="terminal-button yellow"></div>
-            <div class="terminal-button green"></div>
+
+    <div class="app-container">
+        <div class="title-bar">
+            <div class="window-controls">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="title">nova@devops: ~</div>
+            <div class="status-online">● ONLINE</div>
         </div>
-        <div class="terminal-line">
-            <span class="terminal-prompt">levente</span><span class="terminal-at">@</span><span class="terminal-machine">behr</span><span class="terminal-tilde">:</span><span class="terminal-tilde">~</span><span class="terminal-dollar">$</span>
-            <span id="terminal-command" class="terminal-command"></span><span class="terminal-cursor"></span>
-        </div>
-        <div id="terminal-content" class="terminal-content">
-            <main>
-                <header>
-                    <h1>Levente Béhr</h1>
-                    <div class="bio">
-                        <p>System administrator and an aspiring DevOps engineer</p>
+
+        <div class="workspace">
+            <aside class="sidebar">
+                <div class="sidebar-section brand">
+                    <h4>Identity</h4>
+                    <h1>NOVA_</h1>
+                    <p>DevOps · Infrastructure · AI systems</p>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Location</h4>
+                    <div class="location-box">~/</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Commands</h4>
+                    <ul class="cmd-list">
+                        <li><span class="cmd">ls</span> <span class="desc">list directory</span></li>
+                        <li><span class="cmd">cd</span> <span class="desc">change directory</span></li>
+                        <li><span class="cmd">cat</span> <span class="desc">read page</span></li>
+                        <li><span class="cmd">tree</span> <span class="desc">show structure</span></li>
+                        <li><span class="cmd">open</span> <span class="desc">launch alias</span></li>
+                        <li><span class="cmd">help</span> <span class="desc">all commands</span></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="boot-sequence">
+                    <div>nova://kernel loading personal infrastructure interface...</div>
+                    <div><span class="ok">OK</span> virtual filesystem mounted</div>
+                    <div><span class="ok">OK</span> terminal router initialized</div>
+                    <div><span class="ok">OK</span> session ready</div>
+                </div>
+
+                <div class="breadcrumbs">SYSTEMS / NETWORKS / AUTOMATION</div>
+                
+                <h2 class="hero-title">
+                    <span class="white">Welcome to</span> <span class="pink">Nova's</span><br>
+                    <span class="cyan">stack.</span>
+                </h2>
+
+                <p class="hero-desc">
+                    A command-driven DevOps workspace for infrastructure notes, active builds, architecture decisions, and the systems I am learning by operating.
+                </p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-number">01 / BUILD</div>
+                        <div class="card-title">Homelab infrastructure and network services</div>
                     </div>
-                    <nav>
-                        <a href="https://www.linkedin.com/in/leventebehr/">LinkedIn</a>
-                        <a href="mailto:sidolevente@aol.com">E-mail me!</a>
-                    </nav>
-                </header>
+                    <div class="card">
+                        <div class="card-number">02 / OPERATE</div>
+                        <div class="card-title">Linux, containers, observability, and automation</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-number">03 / DOCUMENT</div>
+                        <div class="card-title">Notes that behave like a browsable filesystem</div>
+                    </div>
+                </div>
 
-                <section id="about">
-                    <h2>About</h2>
-                    <p>I'm a system and network administrator with a passion for Cybersecurity and DevOps.</p>
-                </section>
-
-                <section id="projects">
-                    <h2>Projects</h2>
+                <div class="interactive-section">
+                    <h3>Start exploring</h3>
                     
-                    <div class="project">
-                        <h3><a href="https://github.com/behrlevi/kube_cluster" target="_blank" rel="noopener noreferrer">K3S cluster</a></h3>
-                        <div class="project-meta">2025 • Homelab</div>
-                        <p>Single node, homelab cluster written as IAAS and automatically provisioned from Git.</p>
-                        <div class="tags">
-                            <span class="tag">K3s</span>
-                            <span class="tag">Flux</span>
-                            <span class="tag">Renovate</span>
+                    <div class="terminal-history" id="terminal-history"></div>
+                    
+                    <div class="terminal-input-wrapper">
+                        <div class="prompt-text">
+                            <span class="user">nova@devops</span> <span class="path">~</span> <span class="arrow">❯</span>
                         </div>
+                        <input type="text" id="cli-input" placeholder="type help and press Enter" autocomplete="off" autofocus>
                     </div>
-                </section>
-
-                <section id="blog">
-                    <h2>Blog</h2>
-                    
-                    <div class="project">
-                        <h3><a href="blog/homelab.html" target="_self" rel="noopener noreferrer">Homelab documentation</a></h3>
-                        <div class="project-meta">October 20, 2025</div>
-                        <p>Technical documentation of the Kubernetes Homelab.</p>
-                    </div>
-                </section>
+                </div>
             </main>
-
-            <footer>
-                <p>© 2025 behrle • Built with HTML and CSS</p>
-            </footer>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Terminal typing effect
-            const terminalCommand = document.getElementById('terminal-command');
-            const terminalContent = document.getElementById('terminal-content');
-            const command = 'aboutme --list'; // The command to type
-            let i = 0;
-            
-            function typeCommand() {
-                if (i < command.length) {
-                    terminalCommand.textContent += command.charAt(i);
-                    i++;
-                    setTimeout(typeCommand, 100); // Typing speed
-                } else {
-                    // When typing is done, show the content after a brief pause
-                    setTimeout(function() {
-                        terminalContent.style.display = 'block';
-                        // Hide the cursor when content is displayed
-                        document.querySelector('.terminal-cursor').style.display = 'none';
-                    }, 500);
-                }
-            }
-            
-            // Start typing after a brief delay
-            setTimeout(typeCommand, 1000);
+        const cliInput = document.getElementById('cli-input');
+        const terminalHistory = document.getElementById('terminal-history');
 
+        cliInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const command = cliInput.value.trim().toLowerCase();
+                
+                // Echo the command to the screen
+                const outputLine = document.createElement('div');
+                outputLine.style.marginBottom = "8px";
+                outputLine.innerHTML = `<span style="color:var(--accent-pink)">nova@devops</span> <span style="color:var(--accent-cyan)">~</span> <span style="color:var(--accent-green)">❯</span> ${command}`;
+                terminalHistory.appendChild(outputLine);
+
+                // Handle basic mock commands
+                const responseLine = document.createElement('div');
+                responseLine.style.color = "var(--text-muted)";
+                responseLine.style.marginBottom = "15px";
+
+                switch(command) {
+                    case 'help':
+                        responseLine.innerHTML = "Available commands: ls, cd, cat, tree, clear";
+                        break;
+                    case 'ls':
+                        responseLine.innerHTML = "<span style='color:var(--accent-cyan)'>projects/</span>  <span style='color:var(--accent-cyan)'>skills/</span>  resume.md  contact.txt";
+                        break;
+                    case 'clear':
+                        terminalHistory.innerHTML = "";
+                        responseLine.innerHTML = "";
+                        break;
+                    case '':
+                        break; // Do nothing on empty enter
+                    default:
+                        responseLine.innerHTML = `Command not found: ${command}. Type 'help' to see available commands.`;
+                }
+
+                if(command !== 'clear' && command !== '') {
+                    terminalHistory.appendChild(responseLine);
+                }
+
+                // Clear input and scroll to bottom
+                cliInput.value = '';
+                document.querySelector('.main-content').scrollTop = document.querySelector('.main-content').scrollHeight;
+            }
+        });
+
+        // Ensure clicking anywhere in the main container focuses the input
+        document.querySelector('.main-content').addEventListener('click', () => {
+            cliInput.focus();
         });
     </script>
 </body>
